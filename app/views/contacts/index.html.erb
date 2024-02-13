@@ -1,0 +1,22 @@
+<% if user_signed_in? %>
+<h1>All Contacts</h1>
+<hr class="border border-dark border-3 opacity-75">
+
+<div id="contacts">
+    
+  <% @contacts.each do |contact| %>
+    <%= render contact %>
+    <p>
+      <%= link_to "View Contact", contact, class:"link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "+Add a New Contact", new_contact_path, class:"btn btn-success mt-5" %>
+<% else %>
+<h1>Welcome</h1>
+<p>This site allows you to create an account to save contacts and their information.</p>
+<p>Please <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %> to continue.
+
+
+<% end %>

@@ -1,0 +1,21 @@
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold"><%= @contact.first_name%> <%= @contact.last_name %></h1>
+    <p class="col-md-8 fs-4"></p>
+    <div class="col-md-8">
+      <p>
+        <%= @contact.email %> |
+        <%= @contact.phone %> |
+        <%= @contact.twitter %>
+      </p> 
+      <%= link_to "Edit", edit_contact_path(@contact), class:"btn btn-dark" %>
+      <%= link_to "Back", contacts_path, class:"btn btn-dark" %>
+    </div>
+      <%= button_to "Delete this contact", @contact, method: :delete, class:"btn btn-danger btn-lg mt-5"%>
+  </div>
+
+</div>
+
+
+
+

@@ -1,0 +1,54 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field form-group mt-4">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control' %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field form-group mt-2">
+    <%= f.label :password %> <em class="small fw-light"><i>(leave blank if you don't want to change it)</i></em><br />
+    <%= f.password_field :password, autocomplete: "new-password", class:'form-control' %>
+    <% if @minimum_password_length %>
+      <br />
+      <em class="small fw-light"><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control' %>
+  </div>
+
+  <div class="field form-group mt-2">
+    <%= f.label :current_password %> <em class="small fw-light"><i>(we need your current password to confirm your changes)</i></em><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class:'form-control' %>
+  </div>
+
+  <div class="actions mt-3">
+    <%= f.submit "Update", class:"btn btn-dark" %>
+  </div>
+<% end %>
+<hr>
+
+<div class="card">
+  <div class="card-header">
+    Account Cancellation
+  </div>
+  <div class="card-body">
+    <h5 class="card-title mb-3">Cancel My Account</h5>
+      <p class="card-text">If you would like to delete your account and all of its data, you can do so below. <strong class="text-danger">You cannot undo this action.</strong>
+      </p>
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:'btn btn-danger' %>
+  </div>
+</div>
+
+<div class="mt-3 mb-3">
+<%= link_to "Back", :back, class:'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' %>
+</div>
